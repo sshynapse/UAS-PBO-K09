@@ -1,78 +1,152 @@
-========================================================================
-PROJECT UAS PRAKTIKUM PEMROGRAMAN BERORIENTASI OBJEK - KELAS B
-PROGRAM STUDI INFORMATIKA, FMIPA UNIVERSITAS SYIAH KUALA
-SEMESTER GANJIL 2026/2027
-========================================================================
+# ⚡ Sistem Rental Sepeda Listrik & Skuter
 
-JUDUL PROGRAM
-Sistem rental sepeda listrik dan skuter berbasis GUI dengan Java
+**Project UAS Praktikum Pemrograman Berorientasi Objek — Kelas B**
 
-------------------------------------------------------------------------
-1. IDENTITAS KELOMPOK 9
-------------------------------------------------------------------------
-No.   Nama Lengkap            NPM
-1.    Riski Maulidan          250810701100004
-2.    Shofy Suhaila Putri     250810701100007
-3     Kania Ghaitsa Aqira     250810701100035
+Program Studi Informatika · FMIPA · Universitas Syiah Kuala  
+Semester Ganjil 2026/2027
 
+---
 
-------------------------------------------------------------------------
-2. DESKRIPSI
-------------------------------------------------------------------------
-Sistem penyewaan sepeda listrik dan skuter berbasis GUI menggunakan
-bahasa Java, dibuat untuk UAS Praktikum Pemrograman Berorientasi Objek.
-Penyewa memasukkan barang ke keranjang, lalu membuat transaksi sewa
-dengan lama sewa dan metode pembayaran pilihan. Admin mengelola barang,
-menerima transaksi, dan mengonfirmasi pengembalian beserta denda
-keterlambatan. Tersedia juga versi GUI (Swing) sebagai tambahan opsional.
+## Tentang Proyek
 
+Sistem Rental Sepeda Listrik & Skuter merupakan aplikasi penyewaan kendaraan berbasis Java yang dikembangkan sebagai proyek Ujian Akhir Semester (UAS) Praktikum Pemrograman Berorientasi Objek.
 
-------------------------------------------------------------------------
-3. FITUR
-------------------------------------------------------------------------
-- Login Admin dan Penyewa
-- Kelola barang (tambah, edit, hapus) dan keranjang sewa
-- 3 kategori barang: Sepeda Listrik, Skuter Listrik (+ asuransi 5%),
-  Skuter Premium (+ helm dan baterai Rp10.000/hari)
-- 3 metode pembayaran: Transfer Bank, QRIS, Tunai
-- Invoice, riwayat sewa, dan denda keterlambatan Rp20.000 per hari per barang
-- Barang yang sedang disewa tidak bisa disewa penyewa lain
+Aplikasi ini menyediakan dua jenis pengguna, yaitu **Admin** dan **Penyewa**, dengan fitur pengelolaan barang, transaksi penyewaan, pembayaran, hingga pengembalian kendaraan. Program tersedia dalam versi Command Line Interface (CLI) dan Graphical User Interface (GUI) menggunakan Java Swing.
 
+## Fitur Aplikasi
 
-------------------------------------------------------------------------
-4. STRUKTUR PROYEK
-------------------------------------------------------------------------
+| Fitur | Deskripsi |
+|---|---|
+| 🔐 Login | Autentikasi Admin dan Penyewa |
+| 📦 Kelola Barang | Tambah, edit, dan hapus barang |
+| 🛒 Keranjang Sewa | Menambahkan dan menghapus barang dari keranjang |
+| 🛴 Kategori Kendaraan | Sepeda Listrik, Skuter Listrik, dan Skuter Premium |
+| 💳 Pembayaran | Transfer Bank, QRIS, dan Tunai |
+| 🧾 Invoice | Membuat dan menampilkan invoice penyewaan |
+| 📋 Riwayat Sewa | Menampilkan riwayat transaksi penyewa |
+| ↩️ Pengembalian | Konfirmasi pengembalian kendaraan oleh Admin |
+| ⚠️ Denda | Perhitungan denda keterlambatan Rp20.000 per hari per barang |
+
+### Kategori Kendaraan
+
+- **Sepeda Listrik**
+- **Skuter Listrik** — biaya asuransi sebesar 5%.
+- **Skuter Premium** — biaya helm dan baterai sebesar Rp10.000/hari.
+
+Barang yang sedang disewa tidak dapat disewa oleh penyewa lain.
+
+## Teknologi
+
+- **Bahasa:** Java
+- **GUI:** Java Swing
+- **Version Control:** Git & GitHub
+
+## Struktur Proyek
+
+```text
 UAS-PBO-K09/
-├── README.txt
 ├── docs/
 │   └── class-diagram.png
-└── src/
-    ├── Main.java                 (CLI)
-    ├── MainGUI.java              (GUI)
-    ├── model/                    Akun, Admin, Penyewa, Barang, SepedaListrik,
-    │                             SkuterListrik, SkuterPremium, Transaksi, Invoice
-    ├── payment/                  Pembayaran (interface), TransferBank, QRIS, Tunai
-    ├── service/                  DataSistem, KeranjangSewa, DaftarBarang
-    ├── exception/                LoginGagalException, BarangTidakTersediaException
-    └── gui/                      LoginFrame, PenyewaFrame, AdminFrame, Theme, Util
+│
+├── src/
+│   ├── Main.java
+│   ├── MainGUI.java
+│   │
+│   ├── model/
+│   │   ├── Akun.java
+│   │   ├── Admin.java
+│   │   ├── Penyewa.java
+│   │   ├── Barang.java
+│   │   ├── SepedaListrik.java
+│   │   ├── SkuterListrik.java
+│   │   ├── SkuterPremium.java
+│   │   ├── Transaksi.java
+│   │   └── Invoice.java
+│   │
+│   ├── payment/
+│   │   ├── Pembayaran.java
+│   │   ├── TransferBank.java
+│   │   ├── QRIS.java
+│   │   └── Tunai.java
+│   │
+│   ├── service/
+│   │   ├── DataSistem.java
+│   │   ├── KeranjangSewa.java
+│   │   └── DaftarBarang.java
+│   │
+│   ├── exception/
+│   │   ├── LoginGagalException.java
+│   │   └── BarangTidakTersediaException.java
+│   │
+│   └── gui/
+│       ├── LoginFrame.java
+│       ├── PenyewaFrame.java
+│       ├── AdminFrame.java
+│       ├── Theme.java
+│       └── Util.java
+│
+└── README.md
+```
 
+## Cara Menjalankan
 
-------------------------------------------------------------------------
-5. CARA MENJALANKAN
-------------------------------------------------------------------------
+### Persyaratan
 
-Compile dari folder utama proyek (PowerShell), lalu jalankan:
-  javac -d out (Get-ChildItem -Path src -Recurse -Filter *.java | ForEach-Object { $_.FullName })
-  java -cp out Main
+- Java Development Kit (JDK)
+- Terminal atau IDE yang mendukung Java
 
-Untuk Git Bash / Mac / Linux, compile dengan:
-  javac -d out $(find src -name "*.java")
+### 1. Clone Repository
 
-Versi GUI: java -cp out MainGUI
+```bash
+git clone [LINK-REPOSITORY]
+```
 
-------------------------------------------------------------------------
-6. AKUN DEMO
-------------------------------------------------------------------------
-- Admin   : admin / admin123
-- Penyewa : budi / budi123
-- Penyewa : sari / sari123
+Masuk ke folder proyek:
+
+```bash
+cd UAS-PBO-K09
+```
+
+### 2. Compile Program
+
+**Windows PowerShell:**
+
+```powershell
+javac -d out (Get-ChildItem -Path src -Recurse -Filter *.java | ForEach-Object { $_.FullName })
+```
+
+**Git Bash / macOS / Linux:**
+
+```bash
+javac -d out $(find src -name "*.java")
+```
+
+### 3. Jalankan Aplikasi
+
+**Versi CLI:**
+
+```bash
+java -cp out Main
+```
+
+**Versi GUI:**
+
+```bash
+java -cp out MainGUI
+```
+
+## Akun Demo
+
+| Role | Username | Password |
+|---|---|---|
+| Admin | `admin` | `admin123` |
+| Penyewa | `budi` | `budi123` |
+| Penyewa | `sari` | `sari123` |
+
+## Anggota Kelompok 9
+
+| No. | Nama Lengkap | NPM |
+|:---:|---|:---:|
+| 1 | Riski Maulidan | 250810701100004 |
+| 2 | Shofy Suhaila Putri | 250810701100007 |
+| 3 | Kania Ghaitsa Aqira | 250810701100035 |
